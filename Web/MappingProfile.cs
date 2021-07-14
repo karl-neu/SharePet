@@ -17,6 +17,8 @@ namespace Web
             CreateMap<Owner, OwnerWithPetsDto>();
             CreateMap<OwnerForCreationDto, Owner>();
             CreateMap<OwnerForUpdateDto, Owner>();
+            CreateMap<UserForRegistrationDto, User>()
+                .ForMember(u => u.UserName, opt => opt.MapFrom(x => x.Email));
         }
     }
 }

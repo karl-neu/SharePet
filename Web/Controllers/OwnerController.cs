@@ -2,6 +2,7 @@
 using Contracts;
 using Entities.DataTransferObjects;
 using Entities.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 namespace Web.Controllers
 {
     [Route("api/owner")]
+    [Authorize]
     [ApiController]
     public class OwnerController : ControllerBase
     {
@@ -24,6 +26,7 @@ namespace Web.Controllers
             _repository = repository;
             _mapper = mapper;
         }
+        [Authorize(Roles = "Administrator")]
         [HttpGet]
         public IActionResult GetAllOwners()
         {
@@ -195,6 +198,16 @@ namespace Web.Controllers
                 _logger.LogError($"Something went wrong inside DeleteOwner action: {ex.Message}");
                 return StatusCode(500, "Internal server error");
             }
+        }
+        [Authorize(Roles = "Administrator")]
+        [HttpGet("Privacy")]
+        public IActionResult Privacy()
+        {
+            var claims = User.Claims
+                .Select(c => new { c.Type, c.Value })
+                .ToList();
+
+            return Ok(claims);
         }
     }
 }

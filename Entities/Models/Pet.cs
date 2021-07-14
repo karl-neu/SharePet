@@ -15,6 +15,9 @@ namespace Entities.Models
         public DateTime DateCreated { get; set; }
         [Required(ErrorMessage = "Account type is required")]
         public string PetType { get; set; }
+        [StringLength(60, ErrorMessage = "Name can't be longer than 60 characters")]
+        public string Name { get; set; }
+        public string Image { get; set; }
         [Required(ErrorMessage = "Owner Id is required")]
         [ForeignKey(nameof(Owner))]
         public string OwnerId { get; set; }

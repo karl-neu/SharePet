@@ -9,5 +9,7 @@ namespace Entities.DataTransferObjects
         public string Id { get; set; }
         public DateTime DateCreated { get; set; }
         public string PetType { get; set; }
+        public string Name { get; set; }
+        public string Image { get; set; }
     }
 }

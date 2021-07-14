@@ -1,5 +1,6 @@
 ﻿using Contracts;
 using Entities;
+using Entities.Helpers;
 using Entities.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -14,6 +15,13 @@ namespace Repository
         public OwnerRepository(RepositoryContext repositoryContext)
             : base(repositoryContext)
         {
+        }
+
+        public PagedList<Owner> GetOwners(OwnerParameters ownerParameters)
+        {
+            return PagedList<Owner>.ToPagedList(FindAll().OrderBy(on => on.Name), 
+                ownerParameters.PageNumber, 
+                ownerParameters.PageSize);
         }
 
         public IEnumerable<Owner> GetAllOwners()
