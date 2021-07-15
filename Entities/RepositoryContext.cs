@@ -22,6 +22,7 @@ namespace Entities
             modelBuilder.ApplyConfiguration(new PetConfiguration());
             modelBuilder.ApplyConfiguration(new OwnerConfiguration());
             modelBuilder.ApplyConfiguration(new RoleConfiguration());
+
         }
         public DbSet<Owner> Owners { get; set; }
         public DbSet<Pet> Pets { get; set; }

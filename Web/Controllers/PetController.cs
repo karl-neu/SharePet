@@ -28,29 +28,29 @@ namespace Web.Controllers
 			_mapper = mapper;
 		}
 
-		//[HttpGet]
-		//public IActionResult GetPetsForOwner(Guid ownerId, [FromQuery] PetParameters parameters)
-		//{
-		//	var pets = _repository.Pet.GetPetsByOwner(ownerId, parameters);
+        //[HttpGet]
+        //public IActionResult GetPetsForOwner(Guid ownerId, [FromQuery] PetParameters parameters)
+        //{
+        //    var pets = _repository.Pet.GetPetsByOwner(ownerId, parameters);
 
-		//	var metadata = new
-		//	{
-		//		pets.TotalCount,
-		//		pets.PageSize,
-		//		pets.CurrentPage,
-		//		pets.TotalPages,
-		//		pets.HasNext,
-		//		pets.HasPrevious
-		//	};
+        //    var metadata = new
+        //    {
+        //        pets.TotalCount,
+        //        pets.PageSize,
+        //        pets.CurrentPage,
+        //        pets.TotalPages,
+        //        pets.HasNext,
+        //        pets.HasPrevious
+        //    };
 
-		//	Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
+        //    Response.Headers.Add("X-Pagination", JsonConvert.SerializeObject(metadata));
 
-		//	_logger.LogInfo($"Returned {pets.TotalCount} owners from database.");
+        //    _logger.LogInfo($"Returned {pets.TotalCount} owners from database.");
 
-		//	return Ok(pets);
-		//}
+        //    return Ok(pets);
+        //}
 
-		[HttpGet]
+        [HttpGet]
 		public IActionResult GetAllPets()
 		{
 			try

@@ -48,6 +48,10 @@ namespace Web
             services.AddIdentity<User, IdentityRole>(opt =>
             {
                 opt.User.RequireUniqueEmail = true;
+
+                opt.Lockout.AllowedForNewUsers = true;
+                opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(2);
+                opt.Lockout.MaxFailedAccessAttempts = 3;
             }).AddEntityFrameworkStores<RepositoryContext>().AddDefaultTokenProviders();
 
             services.Configure<DataProtectionTokenProviderOptions>(opt =>
